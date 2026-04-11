@@ -1,0 +1,72 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+locale: fr
+
+collections:
+
+  # ── Informations générales ──
+  - name: "general"
+    label: "⚙️ Informations générales"
+    files:
+      - name: "general"
+        label: "Textes & coordonnées"
+        file: "data/general.json"
+        fields:
+          - { label: "Titre de l'onglet (navigateur)", name: "site_title", widget: "string" }
+          - { label: "Nom de l'artiste (hero)", name: "hero_name", widget: "string" }
+          - { label: "Sous-titre hero", name: "hero_tag", widget: "string" }
+          - label: "Statistique 1"
+            name: "stat1_value"
+            widget: "string"
+            hint: "Ex: 500+"
+          - { label: "Label stat 1", name: "stat1_label", widget: "string", hint: "Ex: Soirées mixées" }
+          - { label: "Statistique 2", name: "stat2_value", widget: "string" }
+          - { label: "Label stat 2", name: "stat2_label", widget: "string" }
+          - { label: "Statistique 3", name: "stat3_value", widget: "string" }
+          - { label: "Label stat 3", name: "stat3_label", widget: "string" }
+          - { label: "Email de contact", name: "contact_email", widget: "string" }
+          - { label: "Téléphone", name: "contact_phone", widget: "string" }
+          - { label: "Texte copyright (bas de page)", name: "footer_copyright", widget: "string" }
+
+  # ── À propos ──
+  - name: "about"
+    label: "👤 À propos"
+    files:
+      - name: "about"
+        label: "Biographie & tags musicaux"
+        file: "data/about.json"
+        fields:
+          - { label: "Paragraphe 1 (origines)", name: "bio1", widget: "text" }
+          - { label: "Paragraphe 2 (carrière)", name: "bio2", widget: "text" }
+          - { label: "Paragraphe 3 (ce qui distingue)", name: "bio3", widget: "text" }
+          - label: "Tags musicaux"
+            name: "tags"
+            widget: "list"
+            hint: "Styles de musique affichés sous la bio (ex: Deep House, R&B...)"
+            field: { label: "Tag", name: "tag", widget: "string" }
+
+  # ── Location d'équipement ──
+  - name: "equipements"
+    label: "🔊 Location d'équipement"
+    files:
+      - name: "equipements"
+        label: "Liste des équipements"
+        file: "data/equipements.json"
+        fields:
+          - label: "Équipements"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.nom}} — {{fields.prix}} €/j"
+            fields:
+              - { label: "Emoji icône", name: "emoji", widget: "string", hint: "Ex: 🎚️" }
+              - { label: "Nom de l'équipement", name: "nom", widget: "string" }
+              - { label: "Modèle / référence", name: "modele", widget: "string" }
+              - { label: "Caractéristique 1", name: "spec1", widget: "string" }
+              - { label: "Caractéristique 2", name: "spec2", widget: "string" }
+              - { label: "Caractéristique 3", name: "spec3", widget: "string" }
+              - { label: "Prix / jour (€)", name: "prix", widget: "string" }

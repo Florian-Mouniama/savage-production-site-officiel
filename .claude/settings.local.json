@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_Preview__preview_start",
+      "Bash(where python:*)",
+      "Bash(where python3:*)",
+      "Bash(where node:*)",
+      "Bash(where npm:*)",
+      "Bash(where npx:*)",
+      "Bash(where git:*)",
+      "Read(//c/Program Files/**)",
+      "Read(//c/Users/Mouniama/AppData/Roaming/npm/**)",
+      "Bash(where winget:*)",
+      "Bash(where choco:*)",
+      "Bash(where scoop:*)",
+      "Bash(winget install:*)",
+      "Bash(export PATH=\"/c/Program Files/nodejs:$PATH\")",
+      "Bash(npm --version)",
+      "Bash(npm install:*)",
+      "Bash(netlify login:*)",
+      "Bash(start \"https://app.netlify.com/authorize?response_type=ticket&ticket=aa3e6249a90d64483359097060ff205c\")",
+      "Bash(netlify deploy:*)",
+      "Bash(ls -lt \"C:\\\\Users\\\\Mouniama\\\\AppData\\\\Local\\\\Temp\"/*.png \"C:\\\\Users\\\\Mouniama\\\\AppData\\\\Local\\\\Temp\"/*.jpg)",
+      "WebSearch",
+      "WebFetch(domain:unsplash.com)",
+      "WebFetch(domain:www.pexels.com)",
+      "Bash(xargs ls:*)",
+      "Bash(gh --version)",
+      "Bash(git --version)"
+    ]
+  }
+}

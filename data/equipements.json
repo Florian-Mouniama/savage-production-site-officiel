@@ -1,0 +1,67 @@
+{
+  "items": [
+    {
+      "emoji": "🎚️",
+      "nom": "Table de mixage",
+      "modele": "Pioneer DJM-900NXS2",
+      "spec1": "4 canaux + effets Master",
+      "spec2": "Compatible CDJ / Serato / Rekordbox",
+      "spec3": "Sortie XLR master & booth",
+      "prix": "80"
+    },
+    {
+      "emoji": "💿",
+      "nom": "Platines CDJ",
+      "modele": "Pioneer CDJ-3000 × 2",
+      "spec1": "Écran tactile 9 pouces",
+      "spec2": "Lecture USB / LAN / SD",
+      "spec3": "Vendu par paire",
+      "prix": "120"
+    },
+    {
+      "emoji": "🔊",
+      "nom": "Enceintes actives",
+      "modele": "RCF NX 945-A × 2",
+      "spec1": "1400W RMS par enceinte",
+      "spec2": "Fréquence 55 Hz – 20 kHz",
+      "spec3": "Trépieds & câbles inclus",
+      "prix": "100"
+    },
+    {
+      "emoji": "🔉",
+      "nom": "Caisson de basse",
+      "modele": "JBL PRX815XLFW",
+      "spec1": "1500W amplification intégrée",
+      "spec2": "Réponse 27 Hz – 150 Hz",
+      "spec3": "Compatible DSP configurable",
+      "prix": "70"
+    },
+    {
+      "emoji": "💡",
+      "nom": "Pack Lumières",
+      "modele": "PAR LED · Beam · Derby",
+      "spec1": "4× PAR LED RGBW",
+      "spec2": "2× Tête mobile Beam 60W",
+      "spec3": "2× Derby multicolore",
+      "prix": "90"
+    },
+    {
+      "emoji": "🌫️",
+      "nom": "Machine à fumée",
+      "modele": "Antari Z-1500II",
+      "spec1": "1500W — brouillard dense",
+      "spec2": "Télécommande filaire incluse",
+      "spec3": "Liquide à fumée fourni",
+      "prix": "35"
+    },
+    {
+      "emoji": "🎤",
+      "nom": "Micros sans fil",
+      "modele": "Shure BLX288 × 2",
+      "spec1": "2 micros main + récepteur",
+      "spec2": "Portée 100 m en champ libre",
+      "spec3": "Fréquence UHF stable",
+      "prix": "40"
+    }
+  ]
+}

@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Savage Production — Lucas Amouny · DJ Professionnel · La Réunion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <!-- Logo Savage Production -->
+      <a href="#" class="logo">
+        <svg class="logo-svg" viewBox="0 0 190 58" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="chrome-nav" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%"   stop-color="#ffffff"/>
+              <stop offset="35%"  stop-color="#d8d8d8"/>
+              <stop offset="65%"  stop-color="#888"/>
+              <stop offset="100%" stop-color="#aaaaaa"/>
+            </linearGradient>
+          </defs>
+          <!-- Égaliseur 5 barres -->
+          <rect x="76"  y="15" width="3" height="8"  fill="url(#chrome-nav)" rx="1" opacity=".8"/>
+          <rect x="84"  y="10" width="3" height="13" fill="url(#chrome-nav)" rx="1" opacity=".9"/>
+          <rect x="92"  y="5"  width="3" height="18" fill="url(#chrome-nav)" rx="1"/>
+          <rect x="100" y="10" width="3" height="13" fill="url(#chrome-nav)" rx="1" opacity=".9"/>
+          <rect x="108" y="15" width="3" height="8"  fill="url(#chrome-nav)" rx="1" opacity=".8"/>
+          <!-- Ligne déco -->
+          <line x1="14" y1="26" x2="176" y2="26" stroke="url(#chrome-nav)" stroke-width="0.5" opacity=".35"/>
+          <!-- SAVAGE -->
+          <text x="95" y="44" text-anchor="middle"
+                font-family="'Bebas Neue', sans-serif"
+                font-size="21" fill="url(#chrome-nav)" letter-spacing="5">SAVAGE</text>
+          <!-- PRODUCTION -->
+          <text x="95" y="55" text-anchor="middle"
+                font-family="'Cinzel', serif"
+                font-size="7.5" fill="#606060" letter-spacing="5.5">PRODUCTION</text>
+        </svg>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" data-section="about">À propos</a></li>
+        <li><a href="#prestations" data-section="prestations">Prestations</a></li>
+        <li><a href="#location" data-section="location">Location</a></li>
+        <li><a href="#devis" data-section="devis">Devis</a></li>
+        <li><a href="#devis" class="btn-nav">Réserver</a></li>
+        <div class="nav-indicator" id="navIndicator"></div>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="hero-glow g1"></div>
+      <div class="hero-glow g2"></div>
+      <div class="hero-lines"></div>
+    </div>
+    <div class="container hero-content">
+      <!-- Grand logo centré -->
+      <div class="hero-logo">
+        <svg viewBox="0 0 460 195" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="chrome-hero" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%"   stop-color="#ffffff"/>
+              <stop offset="20%"  stop-color="#ececec"/>
+              <stop offset="55%"  stop-color="#888"/>
+              <stop offset="80%"  stop-color="#d0d0d0"/>
+              <stop offset="100%" stop-color="#606060"/>
+            </linearGradient>
+            <filter id="glow-sv">
+              <feGaussianBlur stdDeviation="2.5" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+
+          <!-- Égaliseur 9 barres -->
+          <rect x="175" y="38" width="5" height="12" fill="url(#chrome-hero)" rx="1.5" opacity=".6"/>
+          <rect x="188" y="30" width="5" height="20" fill="url(#chrome-hero)" rx="1.5" opacity=".75"/>
+          <rect x="201" y="20" width="5" height="30" fill="url(#chrome-hero)" rx="1.5" opacity=".88"/>
+          <rect x="214" y="10" width="5" height="40" fill="url(#chrome-hero)" rx="1.5"/>
+          <rect x="227" y="4"  width="5" height="46" fill="url(#chrome-hero)" rx="1.5"/>
+          <rect x="240" y="10" width="5" height="40" fill="url(#chrome-hero)" rx="1.5"/>
+          <rect x="253" y="20" width="5" height="30" fill="url(#chrome-hero)" rx="1.5" opacity=".88"/>
+          <rect x="266" y="30" width="5" height="20" fill="url(#chrome-hero)" rx="1.5" opacity=".75"/>
+          <rect x="279" y="38" width="5" height="12" fill="url(#chrome-hero)" rx="1.5" opacity=".6"/>
+
+          <!-- Ligne supérieure -->
+          <line x1="40" y1="60" x2="420" y2="60" stroke="url(#chrome-hero)" stroke-width="0.7" opacity=".3"/>
+
+          <!-- SAVAGE -->
+          <text x="230" y="138"
+                text-anchor="middle"
+                font-family="'Bebas Neue', sans-serif"
+                font-size="90" fill="url(#chrome-hero)"
+                filter="url(#glow-sv)"
+                letter-spacing="10">SAVAGE</text>
+
+          <!-- Ligne inférieure -->
+          <line x1="40" y1="148" x2="420" y2="148" stroke="url(#chrome-hero)" stroke-width="0.7" opacity=".3"/>
+
+          <!-- PRODUCTION -->
+          <text x="230" y="173"
+                text-anchor="middle"
+                font-family="'Cinzel', serif"
+                font-size="16" fill="#777"
+                letter-spacing="14">PRODUCTION</text>
+        </svg>
+      </div>
+      <p class="hero-name" data-edit="hero_name">Lucas Amouny</p>
+      <p class="hero-tag" data-edit="hero_tag">DJ & Producteur · Île de la Réunion · Mariages · Soirées · Clubs</p>
+      <!-- Liens sociaux dans le hero -->
+      <div class="hero-socials">
+        <a href="https://www.tiktok.com/@lucaas97k" target="_blank" rel="noopener" class="hero-social-pill hsoc-tiktok">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.22 8.22 0 0 0 4.8 1.53V6.78a4.85 4.85 0 0 1-1.03-.09z"/></svg>
+          @lucaas97k
+        </a>
+        <a href="https://www.instagram.com/savage_prod97k" target="_blank" rel="noopener" class="hero-social-pill hsoc-insta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          @savage_prod97k
+        </a>
+      </div>
+      <div class="hero-actions">
+        <a href="#devis" class="btn btn-light">Demander un devis</a>
+        <a href="#prestations" class="btn btn-ghost-w">Voir mes prestations ↓</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hs"><strong>500+</strong><span>Soirées mixées</span></div>
+        <div class="hs-sep"></div>
+        <div class="hs"><strong>10 ans</strong><span>Sur scène</span></div>
+        <div class="hs-sep"></div>
+        <div class="hs"><strong>La Réunion</strong><span>Île de la Réunion</span></div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-dot"></div>
+    </div>
+  </section>
+
+  <!-- ── À PROPOS ── -->
+  <section class="about section" id="about">
+    <div class="container about-grid">
+      <div class="about-visual">
+        <div class="about-img-wrap">
+          <div class="about-img-placeholder">
+            <svg viewBox="0 0 300 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="300" height="380" fill="#111"/>
+              <circle cx="150" cy="140" r="70" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+              <path d="M50 380 Q150 260 250 380" fill="#1a1a1a"/>
+              <text x="150" y="340" text-anchor="middle" font-family="'Bebas Neue'" font-size="14" fill="#333">PHOTO LUCAS AMOUNY</text>
+              <defs>
+                <linearGradient id="vinyl" cx="50%" cy="50%" r="50%" gradientUnits="objectBoundingBox">
+                  <stop offset="0%" stop-color="#222"/>
+                  <stop offset="100%" stop-color="#111"/>
+                </linearGradient>
+              </defs>
+              <circle cx="150" cy="140" r="55" fill="#111" stroke="#1e1e1e" stroke-width="8"/>
+              <circle cx="150" cy="140" r="40" fill="none" stroke="#1e1e1e" stroke-width="6"/>
+              <circle cx="150" cy="140" r="25" fill="none" stroke="#1e1e1e" stroke-width="4"/>
+              <circle cx="150" cy="140" r="8" fill="#333"/>
+              <circle cx="150" cy="140" r="4" fill="#555"/>
+            </svg>
+          </div>
+          <div class="about-badge">
+            <span>🎧</span>
+            <div><strong>+ 500</strong><small>soirées</small></div>
+          </div>
+        </div>
+      </div>
+      <div class="about-text">
+        <span class="section-tag">Qui suis-je ?</span>
+        <h2>Lucas Amouny<br /><em>alias Savage Production</em></h2>
+        <p data-edit="bio1">Né et grandi à <strong>La Réunion</strong>, <strong>Lucas Amouny</strong> baigne depuis toujours dans une culture musicale intense et métissée. À seulement 16 ans, il pose les mains sur ses premières platines et ne les quittera plus. Autodidacte passionné, il forge son style dans les soirées de l'île, puisant dans la richesse des sonorités créoles, afro, R&B et électro.</p>
+        <p data-edit="bio2">À <strong>23 ans</strong>, sous le nom de scène <strong>Savage Production</strong>, il s'est déjà imposé comme une référence sur la scène événementielle réunionnaise. Mariages, soirées privées, clubs, événements d'entreprise — sa jeunesse n'a d'égale que sa maturité artistique : lecture des foules, sens du timing et énergie communicative font de chaque set un moment unique.</p>
+        <p data-edit="bio3">Ce qui le distingue ? Une préparation minutieuse, une écoute totale de ses clients et la capacité à faire vibrer une salle de la première à la dernière note, quel que soit le public.</p>
+        <div class="about-tags">
+          <span>Deep House</span>
+          <span>Pop / Remix</span>
+          <span>R&B / Soul</span>
+          <span>Électro</span>
+          <span>Afro / Latino</span>
+          <span>Années 80-90-2000</span>
+        </div>
+        <a href="#devis" class="btn btn-light mt">Réserver Savage Production</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── RÉSEAUX SOCIAUX ── -->
+  <section class="reseaux">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Réseaux sociaux</span>
+        <h2>Suivez Savage Production<br /><em>sur les réseaux</em></h2>
+        <p>Sets exclusifs, behind the scenes et ambiances de soirée — vivez l'univers de Savage Production en direct.</p>
+      </div>
+      <div class="social-cards">
+
+        <!-- TikTok -->
+        <a href="https://www.tiktok.com/@lucaas97k" target="_blank" rel="noopener" class="social-card social-card--tiktok">
+          <div class="scard-bg"></div>
+          <div class="scard-inner">
+            <div class="scard-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.22 8.22 0 0 0 4.8 1.53V6.78a4.85 4.85 0 0 1-1.03-.09z"/></svg>
+            </div>
+            <div class="scard-text">
+              <span class="scard-platform">TikTok</span>
+              <h3>@lucaas97k</h3>
+              <p>Sets en live, extraits de soirées, coulisses et montages vidéo — l'ambiance DJ LU-K sans filtre.</p>
+            </div>
+            <div class="scard-cta">
+              Suivre sur TikTok
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/savage_prod97k" target="_blank" rel="noopener" class="social-card social-card--insta">
+          <div class="scard-bg"></div>
+          <div class="scard-inner">
+            <div class="scard-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="40" height="40"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </div>
+            <div class="scard-text">
+              <span class="scard-platform">Instagram</span>
+              <h3>@savage_prod97k</h3>
+              <p>Photos de soirées, visuels de prestations et actualités DJ LU-K — toute l'énergie de la scène réunionnaise.</p>
+            </div>
+            <div class="scard-cta">
+              Suivre sur Instagram
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PRESTATIONS ── -->
+  <section class="prestations section" id="prestations">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Prestations</span>
+        <h2>Chaque soirée,<br />une signature sonore.</h2>
+        <p>Quel que soit l'événement, Savage Production adapte son set, son matériel et son énergie pour créer l'ambiance parfaite.</p>
+      </div>
+
+      <!-- Onglets prestations -->
+      <div class="ptabs">
+        <div class="ptab-list" role="tablist">
+          <button class="ptab active" data-tab="mariage">💍 Mariage</button>
+          <button class="ptab" data-tab="prive">🥂 Soirée Privée</button>
+          <button class="ptab" data-tab="club">🎧 Club / Festival</button>
+          <button class="ptab" data-tab="entreprise">🏢 Entreprise</button>
+          <div class="ptab-slider" id="ptabSlider"></div>
+        </div>
+
+        <!-- Mariage -->
+        <div class="ptab-panel active" data-panel="mariage">
+          <div class="ppanel-grid">
+            <div class="ppanel-content">
+              <h3>Le DJ de votre mariage</h3>
+              <p>Votre mariage est le jour le plus important de votre vie — la musique doit être parfaite. DJ LU-K prend en charge l'intégralité de la bande-son de votre soirée, du cocktail à la fermeture de piste, en accord total avec vos envies et votre playlist.</p>
+              <ul class="ppanel-list">
+                <li>Consultation préalable gratuite pour définir votre univers musical</li>
+                <li>Cocktail, vin d'honneur & dîner — ambiance feutrée et élégante</li>
+                <li>Ouverture de bal & soirée dansante jusqu'en fin de nuit</li>
+                <li>Sono & éclairage professionnel fournis</li>
+                <li>Discours et animations micro inclus</li>
+              </ul>
+              <a href="#devis" class="btn btn-light">Demander un devis mariage</a>
+            </div>
+            <div class="ppanel-photos">
+              <div class="pphoto pp-1"></div>
+              <div class="pphoto pp-2"></div>
+              <div class="pphoto pp-3"></div>
+              <div class="pphoto pp-4"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Soirée Privée -->
+        <div class="ptab-panel" data-panel="prive">
+          <div class="ppanel-grid">
+            <div class="ppanel-content">
+              <h3>Vos soirées privées</h3>
+              <p>Anniversaire, garden-party, réveillon ou soirée surprise — DJ LU-K transforme votre événement privé en une fête inoubliable. Du set d'ambiance pour l'apéro jusqu'au mix enflammé de fin de soirée, il sait faire monter la sauce à son rythme.</p>
+              <ul class="ppanel-list">
+                <li>Set entièrement personnalisé selon vos goûts</li>
+                <li>Matériel professionnel autonome et discret</li>
+                <li>Animation micro et jeux si souhaité</li>
+                <li>Disponible à domicile, en salle, sous chapiteau</li>
+                <li>Formules de 2h à toute la nuit</li>
+              </ul>
+              <a href="#devis" class="btn btn-light">Demander un devis soirée</a>
+            </div>
+            <div class="ppanel-photos">
+              <div class="pphoto pp-5"></div>
+              <div class="pphoto pp-6"></div>
+              <div class="pphoto pp-7"></div>
+              <div class="pphoto pp-8"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Club / Festival -->
+        <div class="ptab-panel" data-panel="club">
+          <div class="ppanel-grid">
+            <div class="ppanel-content">
+              <h3>Club & Festival</h3>
+              <p>La scène est son terrain de jeu. Avec une technique affûtée et une énergie communicative, DJ LU-K envoie des sets qui font chavirer les dancefloors. Sa maîtrise des transitions, du beatmatching et de la lecture de salle en fait un artiste fiable et percutant.</p>
+              <ul class="ppanel-list">
+                <li>Set DJ en club, bar ou festival — tous styles</li>
+                <li>Rider technique disponible sur demande</li>
+                <li>Ouverture, warm-up ou set principal</li>
+                <li>Expérience scène : Ninkasi, Le Brin, Halle Tony Garnier…</li>
+                <li>Mixes disponibles sur demande pour audition</li>
+              </ul>
+              <a href="#devis" class="btn btn-light">Demander un devis club</a>
+            </div>
+            <div class="ppanel-photos">
+              <div class="pphoto pp-9"></div>
+              <div class="pphoto pp-10"></div>
+              <div class="pphoto pp-11"></div>
+              <div class="pphoto pp-12"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Entreprise -->
+        <div class="ptab-panel" data-panel="entreprise">
+          <div class="ppanel-grid">
+            <div class="ppanel-content">
+              <h3>Événements d'entreprise</h3>
+              <p>Soirée de fin d'année, séminaire, lancement de produit ou team building — DJ LU-K apporte une touche musicale professionnelle et mémorable à vos événements corporate, en adaptant parfaitement l'ambiance à votre image de marque.</p>
+              <ul class="ppanel-list">
+                <li>Fond sonore élégant pour cocktail & networking</li>
+                <li>Animation soirée dansante en deuxième partie</li>
+                <li>Image professionnelle et tenue adaptée</li>
+                <li>Coordination avec vos autres prestataires</li>
+                <li>Expérience avec groupes de 20 à 1 500 personnes</li>
+              </ul>
+              <a href="#devis" class="btn btn-light">Demander un devis entreprise</a>
+            </div>
+            <div class="ppanel-photos">
+              <div class="pphoto pp-13"></div>
+              <div class="pphoto pp-14"></div>
+              <div class="pphoto pp-15"></div>
+              <div class="pphoto pp-16"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MATÉRIEL ── -->
+  <section class="materiel">
+    <div class="container materiel-inner">
+      <p class="mat-label">Matériel professionnel inclus</p>
+      <div class="mat-items">
+        <div class="mat-item"><span>🎚️</span> Table de mixage Pioneer</div>
+        <div class="mat-item"><span>💿</span> CDJ 3000 / Serato</div>
+        <div class="mat-item"><span>🔊</span> Sono haute puissance</div>
+        <div class="mat-item"><span>💡</span> Éclairage & jeux de lumières</div>
+        <div class="mat-item"><span>🎤</span> Micros sans fil</div>
+        <div class="mat-item"><span>🚐</span> Transport inclus</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── LOCATION D'ÉQUIPEMENT ── -->
+  <section class="location section" id="location">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Location</span>
+        <h2>Équipement<br /><em>professionnel à louer</em></h2>
+        <p>Vous organisez un événement et avez besoin de matériel ? DJ LU-K met à disposition son parc de matériel haut de gamme, avec livraison et installation en option.</p>
+      </div>
+
+      <!-- Liste équipements -->
+      <div class="loc-list">
+
+        <div class="loc-row">
+          <div class="loc-row-icon">🎚️</div>
+          <div class="loc-row-name">
+            <h4>Table de mixage</h4>
+            <span>Pioneer DJM-900NXS2</span>
+          </div>
+          <div class="loc-row-tags">
+            <span>4 canaux</span>
+            <span>Serato / Rekordbox</span>
+            <span>Sortie XLR</span>
+          </div>
+          <div class="loc-row-price"><strong>80 €</strong><em>/ jour</em></div>
+          <a href="#devis" class="loc-row-btn">Réserver</a>
+        </div>
+
+        <div class="loc-row">
+          <div class="loc-row-icon">💿</div>
+          <div class="loc-row-name">
+            <h4>Platines CDJ</h4>
+            <span>Pioneer CDJ-3000 × 2</span>
+          </div>
+          <div class="loc-row-tags">
+            <span>Écran tactile 9"</span>
+            <span>USB / LAN / SD</span>
+            <span>Par paire</span>
+          </div>
+          <div class="loc-row-price"><strong>120 €</strong><em>/ jour</em></div>
+          <a href="#devis" class="loc-row-btn">Réserver</a>
+        </div>
+
+        <div class="loc-row">
+          <div class="loc-row-icon">🔊</div>
+          <div class="loc-row-name">
+            <h4>Enceintes actives</h4>
+            <span>RCF NX 945-A × 2</span>
+          </div>
+          <div class="loc-row-tags">
+            <span>1400W / unité</span>
+            <span>55 Hz – 20 kHz</span>
+            <span>Trépieds inclus</span>
+          </div>
+          <div class="loc-row-price"><strong>100 €</strong><em>/ jour</em></div>
+          <a href="#devis" class="loc-row-btn">Réserver</a>
+        </div>
+
+        <div class="loc-row">
+          <div class="loc-row-icon">🔉</div>
+          <div class="loc-row-name">
+            <h4>Caisson de basse</h4>
+            <span>JBL PRX815XLFW</span>
+          </div>
+          <div class="loc-row-tags">
+            <span>1500W</span>
+            <span>27 Hz – 150 Hz</span>
+            <span>DSP intégré</span>
+          </div>
+          <div class="loc-row-price"><strong>70 €</strong><em>/ jour</em></div>
+          <a href="#devis" class="loc-row-btn">Réserver</a>
+        </div>
+
+        <div class="loc-row">
+          <div class="loc-row-icon">💡</div>
+          <div class="loc-row-name">
+            <h4>Pack Lumières</h4>
+            <span>PAR LED + Beam + Derby</span>
+          </div>
+          <div class="loc-row-tags">
+            <span>4× PAR LED RGBW</span>
+            <span>2× Beam 60W</span>
+            <span>2× Derby</span>
+          </div>
+          <div class="loc-row-price"><strong>90 €</strong><em>/ jour</em></div>
+          <a href="#devis" class="loc-row-btn">Réserver</a>
+        </div>
+
+        <div class="loc-row">
+          <div class="loc-row-icon">🌫️</div>
+          <div class="loc-row-name">
+            <h4>Machine à fumée</h4>
+            <span>Antari Z-1500II</span>
+          </div>
+          <div class="loc-row-tags">
+            <span>1500W</span>
+            <span>Brouillard dense</span>
+            <span>Liquide fourni</span>
+          </div>
+          <div class="loc-row-price"><strong>35 €</strong><em>/ jour</em></div>
+          <a href="#devis" class="loc-row-btn">Réserver</a>
+        </div>
+
+        <div class="loc-row">
+          <div class="loc-row-icon">🎤</div>
+          <div class="loc-row-name">
+            <h4>Micros sans fil</h4>
+            <span>Shure BLX288 × 2</span>
+          </div>
+          <div class="loc-row-tags">
+            <span>2 micros + récepteur</span>
+            <span>Portée 100 m</span>
+            <span>UHF stable</span>
+          </div>
+          <div class="loc-row-price"><strong>40 €</strong><em>/ jour</em></div>
+          <a href="#devis" class="loc-row-btn">Réserver</a>
+        </div>
+
+      </div>
+
+      <!-- Pack complet -->
+      <div class="loc-pack">
+        <div class="loc-pack-left">
+          <span class="loc-pack-badge">⭐ Offre complète</span>
+          <h3>Pack Sono Complète</h3>
+          <p>Table de mixage · CDJ ×2 · Enceintes ×2 · Caisson · Pack lumières · Machine à fumée · Micros ×2</p>
+          <div class="loc-pack-chips">
+            <span>🚐 Livraison incluse</span>
+            <span>🔧 Installation sur place</span>
+            <span>📞 Assistance technique</span>
+          </div>
+        </div>
+        <div class="loc-pack-right">
+          <div class="loc-pack-price"><strong>390 €</strong><em>/ jour</em></div>
+          <a href="#devis" class="btn btn-light">Demander ce pack</a>
+        </div>
+      </div>
+
+      <p class="loc-note">📦 Livraison disponible sur toute l'île de La Réunion · Caution demandée · Tarifs dégressifs à la semaine · <a href="#devis">Contactez Lucas</a> pour un devis personnalisé</p>
+    </div>
+  </section>
+
+  <!-- ── DEVIS ── -->
+  <section class="devis section" id="devis">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Réservation</span>
+        <h2>Comment obtenir<br />votre devis ?</h2>
+        <p>Simple, rapide, sans engagement. Savage Production vous répond personnellement sous 24 heures.</p>
+      </div>
+
+      <!-- Étapes -->
+      <div class="devis-steps">
+        <div class="dstep">
+          <div class="dstep-num">01</div>
+          <h4>Remplissez le formulaire</h4>
+          <p>Décrivez votre événement : date, lieu, durée, type de soirée et vos envies musicales.</p>
+        </div>
+        <div class="dstep-arrow">→</div>
+        <div class="dstep">
+          <div class="dstep-num">02</div>
+          <h4>Recevez votre devis</h4>
+          <p>Lucas vous contacte sous 24h avec un devis personnalisé, clair et transparent.</p>
+        </div>
+        <div class="dstep-arrow">→</div>
+        <div class="dstep">
+          <div class="dstep-num">03</div>
+          <h4>Confirmez & profitez</h4>
+          <p>Validez votre réservation avec un acompte. Le reste : laissez la musique faire le travail.</p>
+        </div>
+      </div>
+
+      <!-- Formulaire Netlify -->
+      <form class="devis-form" name="devis-dj-luk" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="devisForm">
+        <input type="hidden" name="form-name" value="devis-dj-luk" />
+        <p style="display:none"><input name="bot-field" /></p>
+
+        <h3>Demande de devis — Savage Production</h3>
+
+        <!-- ── Choix type de demande ── -->
+        <div class="ftt-wrap">
+          <label class="ftt-option ftt-active" id="ftt-label-prestation">
+            <input type="radio" name="type_demande" value="Prestation DJ" checked />
+            <div class="ftt-card">
+              <span class="ftt-icon">🎧</span>
+              <strong>Prestation DJ</strong>
+              <small>DJ LU-K anime votre soirée</small>
+            </div>
+          </label>
+          <label class="ftt-option" id="ftt-label-location">
+            <input type="radio" name="type_demande" value="Location d'équipement" />
+            <div class="ftt-card">
+              <span class="ftt-icon">🔊</span>
+              <strong>Location d'équipement</strong>
+              <small>Louez le matériel professionnel</small>
+            </div>
+          </label>
+        </div>
+
+        <!-- ── Champs communs ── -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="prenom">Prénom & Nom *</label>
+            <input type="text" id="prenom" name="nom" placeholder="Marie Dupont" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" placeholder="contact@exemple.fr" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="tel">Téléphone *</label>
+            <input type="tel" id="tel" name="telephone" placeholder="+262 6 xx xx xx xx" required />
+          </div>
+          <div class="form-group">
+            <label for="date">Date souhaitée *</label>
+            <input type="date" id="date" name="date" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="lieu">Lieu / Commune</label>
+            <input type="text" id="lieu" name="lieu" placeholder="Saint-Denis, Saint-Pierre, Le Tampon…" />
+          </div>
+        </div>
+
+        <!-- ── Section Prestation DJ ── -->
+        <div class="form-section" id="section-prestation">
+          <div class="form-section-divider"><span>Informations prestation</span></div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="type_event">Type d'événement *</label>
+              <select id="type_event" name="type_evenement">
+                <option value="">— Sélectionnez —</option>
+                <option>💍 Mariage</option>
+                <option>🎂 Anniversaire</option>
+                <option>🥂 Soirée privée</option>
+                <option>🎧 Club / Festival</option>
+                <option>🏢 Événement entreprise</option>
+                <option>✨ Autre</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="duree">Durée souhaitée</label>
+              <select id="duree" name="duree">
+                <option value="">— Durée —</option>
+                <option>2h</option>
+                <option>3h</option>
+                <option>4h</option>
+                <option>5h</option>
+                <option>Toute la nuit (6h+)</option>
+                <option>À définir</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="invites">Nombre d'invités estimé</label>
+              <select id="invites" name="invites">
+                <option value="">— Combien ? —</option>
+                <option>Moins de 50</option>
+                <option>50 – 100</option>
+                <option>100 – 200</option>
+                <option>200 – 500</option>
+                <option>Plus de 500</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="musique">Ambiance / Goûts musicaux</label>
+              <input type="text" id="musique" name="musique" placeholder="Ex: Afro, R&B, Maloya, Électro, Mix…" />
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Section Location ── -->
+        <div class="form-section hidden" id="section-location">
+          <div class="form-section-divider"><span>Équipements souhaités</span></div>
+          <div class="form-check-grid">
+
+            <label class="form-check">
+              <input type="checkbox" name="equipement[]" value="Table de mixage Pioneer DJM-900NXS2 — 80€/j" />
+              <div class="fcheck-tick"><svg viewBox="0 0 12 10" fill="none"><polyline points="1,5 4.5,9 11,1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="fcheck-icon">🎚️</div>
+              <div class="fcheck-body"><strong>Table de mixage</strong><span>Pioneer DJM-900NXS2</span></div>
+              <div class="fcheck-price">80 €<em>/j</em></div>
+            </label>
+
+            <label class="form-check">
+              <input type="checkbox" name="equipement[]" value="Platines CDJ Pioneer CDJ-3000 ×2 — 120€/j" />
+              <div class="fcheck-tick"><svg viewBox="0 0 12 10" fill="none"><polyline points="1,5 4.5,9 11,1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="fcheck-icon">💿</div>
+              <div class="fcheck-body"><strong>Platines CDJ</strong><span>Pioneer CDJ-3000 × 2</span></div>
+              <div class="fcheck-price">120 €<em>/j</em></div>
+            </label>
+
+            <label class="form-check">
+              <input type="checkbox" name="equipement[]" value="Enceintes actives RCF NX 945-A ×2 — 100€/j" />
+              <div class="fcheck-tick"><svg viewBox="0 0 12 10" fill="none"><polyline points="1,5 4.5,9 11,1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="fcheck-icon">🔊</div>
+              <div class="fcheck-body"><strong>Enceintes actives</strong><span>RCF NX 945-A × 2</span></div>
+              <div class="fcheck-price">100 €<em>/j</em></div>
+            </label>
+
+            <label class="form-check">
+              <input type="checkbox" name="equipement[]" value="Caisson de basse JBL PRX815XLFW — 70€/j" />
+              <div class="fcheck-tick"><svg viewBox="0 0 12 10" fill="none"><polyline points="1,5 4.5,9 11,1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="fcheck-icon">🔉</div>
+              <div class="fcheck-body"><strong>Caisson de basse</strong><span>JBL PRX815XLFW</span></div>
+              <div class="fcheck-price">70 €<em>/j</em></div>
+            </label>
+
+            <label class="form-check">
+              <input type="checkbox" name="equipement[]" value="Pack Lumières PAR LED + Beam + Derby — 90€/j" />
+              <div class="fcheck-tick"><svg viewBox="0 0 12 10" fill="none"><polyline points="1,5 4.5,9 11,1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="fcheck-icon">💡</div>
+              <div class="fcheck-body"><strong>Pack Lumières</strong><span>PAR LED · Beam · Derby</span></div>
+              <div class="fcheck-price">90 €<em>/j</em></div>
+            </label>
+
+            <label class="form-check">
+              <input type="checkbox" name="equipement[]" value="Machine à fumée Antari Z-1500II — 35€/j" />
+              <div class="fcheck-tick"><svg viewBox="0 0 12 10" fill="none"><polyline points="1,5 4.5,9 11,1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="fcheck-icon">🌫️</div>
+              <div class="fcheck-body"><strong>Machine à fumée</strong><span>Antari Z-1500II</span></div>
+              <div class="fcheck-price">35 €<em>/j</em></div>
+            </label>
+
+            <label class="form-check form-check--featured">
+              <input type="checkbox" name="equipement[]" value="Micros sans fil Shure BLX288 ×2 — 40€/j" />
+              <div class="fcheck-tick"><svg viewBox="0 0 12 10" fill="none"><polyline points="1,5 4.5,9 11,1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="fcheck-icon">🎤</div>
+              <div class="fcheck-body"><strong>Micros sans fil</strong><span>Shure BLX288 × 2</span></div>
+              <div class="fcheck-price">40 €<em>/j</em></div>
+            </label>
+
+            <label class="form-check form-check--featured">
+              <input type="checkbox" name="equipement[]" value="Pack Sono Complète (tout inclus) — 390€/j" />
+              <div class="fcheck-tick"><svg viewBox="0 0 12 10" fill="none"><polyline points="1,5 4.5,9 11,1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="fcheck-icon">⭐</div>
+              <div class="fcheck-body"><strong>Pack Sono Complète</strong><span>Tout inclus · Livraison · Installation</span></div>
+              <div class="fcheck-price fcheck-price--big">390 €<em>/j</em></div>
+            </label>
+
+          </div>
+          <div class="form-row" style="margin-top:18px">
+            <div class="form-group">
+              <label for="nb_jours">Nombre de jours</label>
+              <select id="nb_jours" name="nb_jours">
+                <option value="">— Durée —</option>
+                <option>1 jour</option>
+                <option>2 jours</option>
+                <option>3 jours</option>
+                <option>1 semaine</option>
+                <option>Plus d'une semaine</option>
+                <option>À définir</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="livraison">Livraison & installation</label>
+              <select id="livraison" name="livraison">
+                <option value="">— Souhaitée ? —</option>
+                <option>Oui, avec installation</option>
+                <option>Livraison sans installation</option>
+                <option>Je viens récupérer sur place</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Message ── -->
+        <div class="form-group">
+          <label for="message">Message complémentaire</label>
+          <textarea id="message" name="message" rows="4" placeholder="Infos supplémentaires, demandes particulières, budget estimé…"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-light btn-full">Envoyer ma demande →</button>
+        <p class="form-note">Réponse personnalisée sous 24h · Aucun engagement · Devis 100% gratuit</p>
+        <div id="formSuccess" class="form-success hidden">
+          ✓ Message envoyé ! Savage Production vous recontacte sous 24 heures.
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <svg class="footer-logo-svg" viewBox="0 0 240 82" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="chrome-foot" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%"  stop-color="#fff"/>
+              <stop offset="45%" stop-color="#999"/>
+              <stop offset="100%" stop-color="#555"/>
+            </linearGradient>
+          </defs>
+          <!-- 5 barres égaliseur -->
+          <rect x="95"  y="10" width="4" height="7"  fill="url(#chrome-foot)" rx="1" opacity=".6"/>
+          <rect x="104" y="6"  width="4" height="11" fill="url(#chrome-foot)" rx="1" opacity=".75"/>
+          <rect x="113" y="2"  width="4" height="15" fill="url(#chrome-foot)" rx="1"/>
+          <rect x="122" y="6"  width="4" height="11" fill="url(#chrome-foot)" rx="1" opacity=".75"/>
+          <rect x="131" y="10" width="4" height="7"  fill="url(#chrome-foot)" rx="1" opacity=".6"/>
+          <!-- Ligne -->
+          <line x1="10" y1="22" x2="230" y2="22" stroke="url(#chrome-foot)" stroke-width="0.5" opacity=".3"/>
+          <!-- SAVAGE -->
+          <text x="120" y="52" text-anchor="middle"
+                font-family="'Bebas Neue', sans-serif"
+                font-size="34" fill="url(#chrome-foot)" letter-spacing="6">SAVAGE</text>
+          <!-- Ligne -->
+          <line x1="10" y1="59" x2="230" y2="59" stroke="url(#chrome-foot)" stroke-width="0.5" opacity=".3"/>
+          <!-- PRODUCTION -->
+          <text x="120" y="74" text-anchor="middle"
+                font-family="'Cinzel', serif"
+                font-size="10" fill="#555" letter-spacing="8">PRODUCTION</text>
+        </svg>
+        <p>Lucas Amouny · DJ Professionnel<br />Île de la Réunion</p>
+      </div>
+      <div class="footer-mid">
+        <h5>Navigation</h5>
+        <a href="#about">À propos</a>
+        <a href="#prestations">Prestations</a>
+        <a href="#location">Location</a>
+        <a href="#devis">Devis gratuit</a>
+      </div>
+      <div class="footer-right">
+        <h5>Contact direct</h5>
+        <a href="mailto:contact@savageproduction.re" data-edit-href="contact_email" data-edit="contact_email">contact@savageproduction.re</a>
+        <a href="tel:+26200000000" data-edit="contact_phone">+262 6 92 xx xx xx</a>
+        <div class="footer-socials">
+          <a href="https://www.tiktok.com/@lucaas97k" target="_blank" rel="noopener" aria-label="TikTok @lucaas97k">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.22 8.22 0 0 0 4.8 1.53V6.78a4.85 4.85 0 0 1-1.03-.09z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/savage_prod97k" target="_blank" rel="noopener" aria-label="Instagram @savage_prod97k">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p data-edit="footer_copyright">© 2026 Savage Production — Lucas Amouny. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── FLOATING SOCIAL BUTTONS ── -->
+  <div class="social-float">
+    <a href="https://www.tiktok.com/@lucaas97k" target="_blank" rel="noopener" class="sfloat-btn sfloat-tiktok" aria-label="TikTok">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.22 8.22 0 0 0 4.8 1.53V6.78a4.85 4.85 0 0 1-1.03-.09z"/></svg>
+      <span>TikTok</span>
+    </a>
+    <a href="https://www.instagram.com/savage_prod97k" target="_blank" rel="noopener" class="sfloat-btn sfloat-insta" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      <span>Instagram</span>
+    </a>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

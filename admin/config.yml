@@ -7,53 +7,249 @@ public_folder: "/images"
 
 locale: fr
 
+# ════════════════════════════════════════
+#  SAVAGE PRODUCTION — Panel d'administration
+#  Modifiez ici le contenu de votre site.
+#  Chaque sauvegarde met le site à jour
+#  automatiquement en moins d'une minute.
+# ════════════════════════════════════════
+
 collections:
 
-  # ── Informations générales ──
+  # ────────────────────────────────────
+  # 1. INFORMATIONS GÉNÉRALES
+  # ────────────────────────────────────
   - name: "general"
-    label: "⚙️ Informations générales"
+    label: "🏠 Page d'accueil"
+    description: "Modifiez les textes principaux de la page d'accueil : nom, accroche, statistiques et coordonnées."
     files:
-      - name: "general"
-        label: "Textes & coordonnées"
+
+      - name: "hero"
+        label: "Texte principal (haut de page)"
         file: "data/general.json"
         fields:
-          - { label: "Titre de l'onglet (navigateur)", name: "site_title", widget: "string" }
-          - { label: "Nom de l'artiste (hero)", name: "hero_name", widget: "string" }
-          - { label: "Sous-titre hero", name: "hero_tag", widget: "string" }
-          - label: "Statistique 1"
+          - label: "Nom de l'artiste"
+            name: "hero_name"
+            widget: "string"
+            hint: "Affiché sous le logo — ex: Lucas Amouny"
+
+          - label: "Accroche sous le nom"
+            name: "hero_tag"
+            widget: "string"
+            hint: "La ligne de description courte sous le nom — ex: DJ & Producteur · Île de la Réunion"
+
+          - label: "──── Statistiques ────"
+            name: "sep_stats"
+            widget: "hidden"
+            default: ""
+
+          - label: "Chiffre 1"
             name: "stat1_value"
             widget: "string"
             hint: "Ex: 500+"
-          - { label: "Label stat 1", name: "stat1_label", widget: "string", hint: "Ex: Soirées mixées" }
-          - { label: "Statistique 2", name: "stat2_value", widget: "string" }
-          - { label: "Label stat 2", name: "stat2_label", widget: "string" }
-          - { label: "Statistique 3", name: "stat3_value", widget: "string" }
-          - { label: "Label stat 3", name: "stat3_label", widget: "string" }
-          - { label: "Email de contact", name: "contact_email", widget: "string" }
-          - { label: "Téléphone", name: "contact_phone", widget: "string" }
-          - { label: "Texte copyright (bas de page)", name: "footer_copyright", widget: "string" }
 
-  # ── À propos ──
+          - label: "Légende chiffre 1"
+            name: "stat1_label"
+            widget: "string"
+            hint: "Ex: Soirées mixées"
+
+          - label: "Chiffre 2"
+            name: "stat2_value"
+            widget: "string"
+            hint: "Ex: 7 ans"
+
+          - label: "Légende chiffre 2"
+            name: "stat2_label"
+            widget: "string"
+            hint: "Ex: Sur scène"
+
+          - label: "Chiffre 3"
+            name: "stat3_value"
+            widget: "string"
+            hint: "Ex: La Réunion"
+
+          - label: "Légende chiffre 3"
+            name: "stat3_label"
+            widget: "string"
+            hint: "Ex: Île de la Réunion"
+
+          - label: "──── Contact ────"
+            name: "sep_contact"
+            widget: "hidden"
+            default: ""
+
+          - label: "Email de contact"
+            name: "contact_email"
+            widget: "string"
+            hint: "Affiché dans le pied de page — ex: contact@savageproduction.re"
+
+          - label: "Numéro de téléphone"
+            name: "contact_phone"
+            widget: "string"
+            hint: "Affiché dans le pied de page — ex: +262 6 92 xx xx xx"
+
+          - label: "Texte de copyright (bas de page)"
+            name: "footer_copyright"
+            widget: "string"
+            hint: "Ex: © 2026 Savage Production — Lucas Amouny. Tous droits réservés."
+
+  # ────────────────────────────────────
+  # 2. BIOGRAPHIE
+  # ────────────────────────────────────
   - name: "about"
-    label: "👤 À propos"
+    label: "👤 Biographie"
+    description: "Modifiez la biographie de Lucas et ses styles musicaux affichés sur la page."
     files:
+
       - name: "about"
-        label: "Biographie & tags musicaux"
+        label: "Biographie & styles musicaux"
         file: "data/about.json"
         fields:
-          - { label: "Paragraphe 1 (origines)", name: "bio1", widget: "text" }
-          - { label: "Paragraphe 2 (carrière)", name: "bio2", widget: "text" }
-          - { label: "Paragraphe 3 (ce qui distingue)", name: "bio3", widget: "text" }
-          - label: "Tags musicaux"
+          - label: "Paragraphe 1 — Les origines"
+            name: "bio1"
+            widget: "text"
+            hint: "Premier paragraphe : présentation, origines, débuts"
+
+          - label: "Paragraphe 2 — La carrière"
+            name: "bio2"
+            widget: "text"
+            hint: "Deuxième paragraphe : expérience, nom de scène, événements"
+
+          - label: "Paragraphe 3 — Ce qui le distingue"
+            name: "bio3"
+            widget: "text"
+            hint: "Troisième paragraphe : ce qui rend Savage Production unique"
+
+          - label: "Styles musicaux"
             name: "tags"
             widget: "list"
-            hint: "Styles de musique affichés sous la bio (ex: Deep House, R&B...)"
-            field: { label: "Tag", name: "tag", widget: "string" }
+            hint: "Les étiquettes de styles musicaux affichées sous la biographie. Cliquez + pour en ajouter."
+            field:
+              label: "Style"
+              name: "tag"
+              widget: "string"
 
-  # ── Location d'équipement ──
+  # ────────────────────────────────────
+  # 3. PRESTATIONS
+  # ────────────────────────────────────
+  - name: "prestations"
+    label: "🎧 Prestations"
+    description: "Modifiez les descriptions de chaque type de prestation (Mariage, Soirée Privée, Club, Entreprise)."
+    files:
+
+      - name: "mariage"
+        label: "💍 Mariage"
+        file: "data/prestations.json"
+        fields:
+          - label: "Titre de l'onglet Mariage"
+            name: "mariage.titre"
+            widget: "string"
+          - label: "Description"
+            name: "mariage.description"
+            widget: "text"
+            hint: "Texte de présentation affiché dans l'onglet"
+          - label: "Point 1"
+            name: "mariage.point1"
+            widget: "string"
+          - label: "Point 2"
+            name: "mariage.point2"
+            widget: "string"
+          - label: "Point 3"
+            name: "mariage.point3"
+            widget: "string"
+          - label: "Point 4"
+            name: "mariage.point4"
+            widget: "string"
+          - label: "Point 5"
+            name: "mariage.point5"
+            widget: "string"
+
+      - name: "prive"
+        label: "🥂 Soirée Privée"
+        file: "data/prestations.json"
+        fields:
+          - label: "Titre de l'onglet Soirée Privée"
+            name: "prive.titre"
+            widget: "string"
+          - label: "Description"
+            name: "prive.description"
+            widget: "text"
+          - label: "Point 1"
+            name: "prive.point1"
+            widget: "string"
+          - label: "Point 2"
+            name: "prive.point2"
+            widget: "string"
+          - label: "Point 3"
+            name: "prive.point3"
+            widget: "string"
+          - label: "Point 4"
+            name: "prive.point4"
+            widget: "string"
+          - label: "Point 5"
+            name: "prive.point5"
+            widget: "string"
+
+      - name: "club"
+        label: "🎧 Club / Festival"
+        file: "data/prestations.json"
+        fields:
+          - label: "Titre de l'onglet Club"
+            name: "club.titre"
+            widget: "string"
+          - label: "Description"
+            name: "club.description"
+            widget: "text"
+          - label: "Point 1"
+            name: "club.point1"
+            widget: "string"
+          - label: "Point 2"
+            name: "club.point2"
+            widget: "string"
+          - label: "Point 3"
+            name: "club.point3"
+            widget: "string"
+          - label: "Point 4"
+            name: "club.point4"
+            widget: "string"
+          - label: "Point 5"
+            name: "club.point5"
+            widget: "string"
+
+      - name: "entreprise"
+        label: "🏢 Entreprise"
+        file: "data/prestations.json"
+        fields:
+          - label: "Titre de l'onglet Entreprise"
+            name: "entreprise.titre"
+            widget: "string"
+          - label: "Description"
+            name: "entreprise.description"
+            widget: "text"
+          - label: "Point 1"
+            name: "entreprise.point1"
+            widget: "string"
+          - label: "Point 2"
+            name: "entreprise.point2"
+            widget: "string"
+          - label: "Point 3"
+            name: "entreprise.point3"
+            widget: "string"
+          - label: "Point 4"
+            name: "entreprise.point4"
+            widget: "string"
+          - label: "Point 5"
+            name: "entreprise.point5"
+            widget: "string"
+
+  # ────────────────────────────────────
+  # 4. LOCATION D'ÉQUIPEMENT
+  # ────────────────────────────────────
   - name: "equipements"
     label: "🔊 Location d'équipement"
+    description: "Ajoutez, modifiez ou supprimez les équipements disponibles à la location. Chaque ligne correspond à une carte affichée sur le site."
     files:
+
       - name: "equipements"
         label: "Liste des équipements"
         file: "data/equipements.json"
@@ -61,12 +257,65 @@ collections:
           - label: "Équipements"
             name: "items"
             widget: "list"
-            summary: "{{fields.nom}} — {{fields.prix}} €/j"
+            summary: "{{fields.emoji}} {{fields.nom}} — {{fields.prix}} €/jour"
+            hint: "Cliquez sur + pour ajouter un équipement, sur la corbeille pour en supprimer un."
             fields:
-              - { label: "Emoji icône", name: "emoji", widget: "string", hint: "Ex: 🎚️" }
-              - { label: "Nom de l'équipement", name: "nom", widget: "string" }
-              - { label: "Modèle / référence", name: "modele", widget: "string" }
-              - { label: "Caractéristique 1", name: "spec1", widget: "string" }
-              - { label: "Caractéristique 2", name: "spec2", widget: "string" }
-              - { label: "Caractéristique 3", name: "spec3", widget: "string" }
-              - { label: "Prix / jour (€)", name: "prix", widget: "string" }
+              - label: "Icône (emoji)"
+                name: "emoji"
+                widget: "string"
+                hint: "Copiez-collez un emoji — ex: 🎚️ 💿 🔊 🎤 💡"
+
+              - label: "Nom de l'équipement"
+                name: "nom"
+                widget: "string"
+                hint: "Ex: Table de mixage"
+
+              - label: "Modèle / référence"
+                name: "modele"
+                widget: "string"
+                hint: "Ex: Pioneer DJM-900NXS2"
+
+              - label: "Caractéristique 1"
+                name: "spec1"
+                widget: "string"
+                hint: "Ex: 4 canaux + effets Master"
+
+              - label: "Caractéristique 2"
+                name: "spec2"
+                widget: "string"
+
+              - label: "Caractéristique 3"
+                name: "spec3"
+                widget: "string"
+
+              - label: "Prix par jour (€)"
+                name: "prix"
+                widget: "string"
+                hint: "Entrez uniquement le chiffre — ex: 80"
+
+  # ────────────────────────────────────
+  # 5. MATÉRIEL INCLUS
+  # ────────────────────────────────────
+  - name: "materiel"
+    label: "🛠️ Matériel inclus"
+    description: "La bande de matériel affichée entre les Prestations et le formulaire de devis."
+    files:
+
+      - name: "materiel"
+        label: "Équipement inclus dans les prestations"
+        file: "data/materiel.json"
+        fields:
+          - label: "Éléments"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.emoji}} {{fields.texte}}"
+            hint: "Les éléments affichés dans la bande grise. Cliquez + pour en ajouter."
+            fields:
+              - label: "Icône (emoji)"
+                name: "emoji"
+                widget: "string"
+                hint: "Ex: 🎚️"
+              - label: "Texte"
+                name: "texte"
+                widget: "string"
+                hint: "Ex: Table de mixage Pioneer"

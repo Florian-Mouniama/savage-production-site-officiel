@@ -1,0 +1,38 @@
+{
+  "mariage": {
+    "titre": "Le DJ de votre mariage",
+    "description": "Votre mariage est le jour le plus important de votre vie — la musique doit être parfaite. Savage Production prend en charge l'intégralité de la bande-son de votre soirée, du cocktail à la fermeture de piste, en accord total avec vos envies et votre playlist.",
+    "point1": "Consultation préalable gratuite pour définir votre univers musical",
+    "point2": "Cocktail, vin d'honneur & dîner — ambiance feutrée et élégante",
+    "point3": "Ouverture de bal & soirée dansante jusqu'en fin de nuit",
+    "point4": "Sono & éclairage professionnel fournis",
+    "point5": "Discours et animations micro inclus"
+  },
+  "prive": {
+    "titre": "Vos soirées privées",
+    "description": "Anniversaire, garden-party, réveillon ou soirée surprise — Savage Production transforme votre événement privé en une fête inoubliable. Du set d'ambiance pour l'apéro jusqu'au mix enflammé de fin de soirée.",
+    "point1": "Set entièrement personnalisé selon vos goûts",
+    "point2": "Matériel professionnel autonome et discret",
+    "point3": "Animation micro et jeux si souhaité",
+    "point4": "Disponible à domicile, en salle, sous chapiteau",
+    "point5": "Formules de 2h à toute la nuit"
+  },
+  "club": {
+    "titre": "Club & Festival",
+    "description": "La scène est son terrain de jeu. Avec une technique affûtée et une énergie communicative, Savage Production envoie des sets qui font chavirer les dancefloors. Sa maîtrise des transitions, du beatmatching et de la lecture de salle en fait un artiste fiable et percutant.",
+    "point1": "Set DJ en club, bar ou festival — tous styles",
+    "point2": "Rider technique disponible sur demande",
+    "point3": "Ouverture, warm-up ou set principal",
+    "point4": "Expérience scène sur toute l'île de La Réunion",
+    "point5": "Mixes disponibles sur demande pour audition"
+  },
+  "entreprise": {
+    "titre": "Événements d'entreprise",
+    "description": "Soirée de fin d'année, séminaire, lancement de produit ou team building — Savage Production apporte une touche musicale professionnelle et mémorable à vos événements corporate, en adaptant parfaitement l'ambiance à votre image de marque.",
+    "point1": "Fond sonore élégant pour cocktail & networking",
+    "point2": "Animation soirée dansante en deuxième partie",
+    "point3": "Image professionnelle et tenue adaptée",
+    "point4": "Coordination avec vos autres prestataires",
+    "point5": "Expérience avec groupes de 20 à 1 500 personnes"
+  }
+}

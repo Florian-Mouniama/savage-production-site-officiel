@@ -4,10 +4,12 @@
 // ══════════════════════════════════════════
 async function loadContent() {
   try {
-    const [general, about, equip] = await Promise.all([
+    const [general, about, equip, prestations, materiel] = await Promise.all([
       fetch('/data/general.json').then(r => r.json()),
       fetch('/data/about.json').then(r => r.json()),
-      fetch('/data/equipements.json').then(r => r.json())
+      fetch('/data/equipements.json').then(r => r.json()),
+      fetch('/data/prestations.json').then(r => r.json()),
+      fetch('/data/materiel.json').then(r => r.json())
     ]);
 
     // Titre de l'onglet
@@ -87,6 +89,30 @@ async function loadContent() {
           </label>`;
         checkGrid.innerHTML = regularItems + packItem;
       }
+    }
+
+    // Prestations — titres, descriptions, points
+    ['mariage','prive','club','entreprise'].forEach(tab => {
+      if (!prestations[tab]) return;
+      const p = prestations[tab];
+      const panel = document.querySelector(`.ptab-panel[data-panel="${tab}"]`);
+      if (!panel) return;
+      const h3 = panel.querySelector('h3');
+      const desc = panel.querySelector('.ppanel-content > p');
+      const items = panel.querySelectorAll('.ppanel-list li');
+      if (h3 && p.titre) h3.textContent = p.titre;
+      if (desc && p.description) desc.textContent = p.description;
+      ['point1','point2','point3','point4','point5'].forEach((key, i) => {
+        if (items[i] && p[key]) items[i].textContent = p[key];
+      });
+    });
+
+    // Matériel inclus (bande strip)
+    const matItems = document.querySelector('.mat-items');
+    if (matItems && materiel.items && materiel.items.length) {
+      matItems.innerHTML = materiel.items
+        .map(m => `<div class="mat-item"><span>${m.emoji}</span> ${m.texte}</div>`)
+        .join('');
     }
 
   } catch(e) {

@@ -8,7 +8,7 @@ headers = []
 
 [build]
 publish = "C:\\Users\\Mouniama\\Projet web"
-publishOrigin = "default"
+publishOrigin = "ui"
 
 [build.environment]
 

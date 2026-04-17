@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — Savage Production</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Rajdhani:wght@600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:      #0a0a0a;
+      --bg2:     #111111;
+      --bg3:     #1a1a1a;
+      --border:  rgba(255,255,255,.08);
+      --border2: rgba(255,255,255,.15);
+      --silver:  #c0c0c0;
+      --dim:     #666;
+      --white:   #ffffff;
+      --green:   #22c55e;
+      --red:     #ef4444;
+      --radius:  10px;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg); color: var(--white);
+      min-height: 100vh;
+    }
+
+    /* ── LOGIN ── */
+    #screen-login {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    }
+    .login-box {
+      background: var(--bg2); border: 1px solid var(--border2);
+      border-radius: 16px; padding: 48px 40px; width: 100%; max-width: 420px;
+    }
+    .login-logo {
+      font-family: 'Bebas Neue', sans-serif; font-size: 2rem;
+      letter-spacing: .1em; color: var(--white); text-align: center;
+      margin-bottom: 6px;
+    }
+    .login-sub {
+      text-align: center; font-size: .8rem; color: var(--dim);
+      letter-spacing: .08em; text-transform: uppercase;
+      margin-bottom: 36px; font-family: 'Rajdhani', sans-serif;
+    }
+    .login-box label {
+      display: block; font-size: .75rem; font-weight: 600;
+      color: var(--dim); text-transform: uppercase; letter-spacing: .08em;
+      margin-bottom: 8px; font-family: 'Rajdhani', sans-serif;
+    }
+    .login-box input {
+      width: 100%; background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 8px; padding: 12px 14px; color: var(--white);
+      font-family: 'Inter', sans-serif; font-size: .9rem;
+      outline: none; margin-bottom: 20px;
+      transition: border-color .2s;
+    }
+    .login-box input:focus { border-color: var(--border2); }
+    .login-hint {
+      font-size: .78rem; color: var(--dim); line-height: 1.6;
+      margin-bottom: 24px; padding: 12px 14px;
+      background: rgba(255,255,255,.03); border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .login-hint a { color: var(--silver); }
+    #login-error {
+      color: var(--red); font-size: .82rem; margin-bottom: 12px;
+      display: none; text-align: center;
+    }
+
+    /* ── BOUTONS ── */
+    .btn-primary {
+      width: 100%; padding: 13px; background: var(--white); color: #000;
+      border: none; border-radius: 8px; font-family: 'Rajdhani', sans-serif;
+      font-size: .95rem; font-weight: 700; letter-spacing: .06em;
+      text-transform: uppercase; cursor: pointer;
+      transition: all .2s;
+    }
+    .btn-primary:hover { background: #eee; }
+    .btn-primary:disabled { background: #333; color: #666; cursor: not-allowed; }
+    .btn-save {
+      padding: 12px 28px; background: var(--white); color: #000;
+      border: none; border-radius: 8px; font-family: 'Rajdhani', sans-serif;
+      font-size: .92rem; font-weight: 700; letter-spacing: .06em;
+      text-transform: uppercase; cursor: pointer; transition: all .2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-save:hover { background: #eee; transform: translateY(-1px); }
+    .btn-save:disabled { background: #333; color: #666; cursor: not-allowed; }
+    .btn-danger {
+      padding: 6px 12px; background: rgba(239,68,68,.1); color: var(--red);
+      border: 1px solid rgba(239,68,68,.3); border-radius: 6px;
+      font-size: .78rem; font-weight: 600; cursor: pointer;
+      font-family: 'Rajdhani', sans-serif; letter-spacing: .04em;
+      text-transform: uppercase; transition: all .2s;
+    }
+    .btn-danger:hover { background: rgba(239,68,68,.2); }
+    .btn-add {
+      padding: 8px 16px; background: rgba(255,255,255,.05);
+      color: var(--silver); border: 1px dashed var(--border2);
+      border-radius: 8px; font-size: .83rem; font-weight: 600;
+      cursor: pointer; font-family: 'Rajdhani', sans-serif;
+      letter-spacing: .05em; text-transform: uppercase; transition: all .2s;
+      width: 100%; margin-top: 10px;
+    }
+    .btn-add:hover { background: rgba(255,255,255,.08); border-color: var(--silver); }
+    .btn-logout {
+      background: none; border: 1px solid var(--border); color: var(--dim);
+      padding: 6px 14px; border-radius: 6px; font-size: .78rem;
+      cursor: pointer; font-family: 'Rajdhani', sans-serif;
+      letter-spacing: .05em; text-transform: uppercase; transition: all .2s;
+    }
+    .btn-logout:hover { border-color: var(--border2); color: var(--white); }
+
+    /* ── APP ── */
+    #screen-app { display: none; }
+
+    .app-header {
+      background: var(--bg2); border-bottom: 1px solid var(--border);
+      padding: 16px 28px; display: flex; align-items: center;
+      justify-content: space-between; position: sticky; top: 0; z-index: 10;
+    }
+    .app-header-left {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem;
+      letter-spacing: .08em; color: var(--white);
+    }
+    .app-header-left span {
+      font-family: 'Rajdhani', sans-serif; font-size: .75rem;
+      color: var(--dim); font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; display: block; margin-top: -2px;
+    }
+    .app-header-right { display: flex; align-items: center; gap: 12px; }
+    .toast {
+      padding: 8px 16px; border-radius: 8px; font-size: .82rem; font-weight: 600;
+      font-family: 'Rajdhani', sans-serif; letter-spacing: .05em;
+      opacity: 0; transition: opacity .3s; text-transform: uppercase;
+    }
+    .toast.success { background: rgba(34,197,94,.15); color: var(--green); border: 1px solid rgba(34,197,94,.3); }
+    .toast.error   { background: rgba(239,68,68,.15);  color: var(--red);   border: 1px solid rgba(239,68,68,.3); }
+    .toast.show    { opacity: 1; }
+
+    /* ── NAVIGATION TABS ── */
+    .app-nav {
+      display: flex; gap: 2px; padding: 16px 28px 0;
+      border-bottom: 1px solid var(--border);
+      overflow-x: auto; scrollbar-width: none;
+    }
+    .app-nav::-webkit-scrollbar { display: none; }
+    .nav-tab {
+      padding: 10px 20px; background: none; border: none;
+      color: var(--dim); cursor: pointer; font-family: 'Rajdhani', sans-serif;
+      font-size: .88rem; font-weight: 700; letter-spacing: .06em;
+      text-transform: uppercase; border-bottom: 2px solid transparent;
+      transition: all .2s; white-space: nowrap; margin-bottom: -1px;
+    }
+    .nav-tab:hover { color: var(--white); }
+    .nav-tab.active { color: var(--white); border-bottom-color: var(--white); }
+
+    /* ── CONTENT ── */
+    .app-content { padding: 36px 28px; max-width: 860px; }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .panel-title {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem;
+      letter-spacing: .06em; color: var(--white); margin-bottom: 6px;
+    }
+    .panel-desc {
+      font-size: .85rem; color: var(--dim); margin-bottom: 32px; line-height: 1.6;
+    }
+
+    /* ── GROUPES DE CHAMPS ── */
+    .field-group {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px; margin-bottom: 20px;
+    }
+    .field-group-title {
+      font-family: 'Rajdhani', sans-serif; font-size: .72rem; font-weight: 700;
+      color: var(--dim); letter-spacing: .1em; text-transform: uppercase;
+      margin-bottom: 20px; padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .field { display: flex; flex-direction: column; gap: 7px; margin-bottom: 16px; }
+    .field:last-child { margin-bottom: 0; }
+    .field label {
+      font-size: .75rem; font-weight: 700; color: var(--dim);
+      text-transform: uppercase; letter-spacing: .07em;
+      font-family: 'Rajdhani', sans-serif;
+    }
+    .field .hint {
+      font-size: .72rem; color: rgba(255,255,255,.25); margin-top: -3px;
+    }
+    .field input, .field textarea, .field select {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 7px; padding: 10px 13px; color: var(--white);
+      font-family: 'Inter', sans-serif; font-size: .88rem;
+      outline: none; transition: border-color .2s; resize: vertical;
+    }
+    .field input:focus, .field textarea:focus { border-color: var(--border2); }
+    .field input::placeholder, .field textarea::placeholder { color: rgba(255,255,255,.2); }
+
+    /* ── TAGS ── */
+    .tags-wrap { display: flex; flex-direction: column; gap: 8px; }
+    .tag-row {
+      display: flex; align-items: center; gap: 8px;
+    }
+    .tag-row input {
+      flex: 1; background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 7px; padding: 9px 12px; color: var(--white);
+      font-family: 'Inter', sans-serif; font-size: .87rem; outline: none;
+    }
+    .tag-row input:focus { border-color: var(--border2); }
+
+    /* ── ÉQUIPEMENTS ── */
+    .equip-list { display: flex; flex-direction: column; gap: 12px; }
+    .equip-item {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 18px 20px;
+    }
+    .equip-item-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 14px;
+    }
+    .equip-item-header strong {
+      font-family: 'Rajdhani', sans-serif; font-size: .85rem; font-weight: 700;
+      color: var(--silver); letter-spacing: .05em; text-transform: uppercase;
+    }
+    .equip-grid { display: grid; grid-template-columns: 60px 1fr 1fr; gap: 10px; }
+    .equip-grid-2 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 10px; }
+    .equip-price { display: grid; grid-template-columns: 1fr auto; gap: 10px; margin-top: 10px; align-items: end; }
+    .equip-price .prix-field { display: flex; flex-direction: column; gap: 7px; }
+    .equip-input {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 6px; padding: 8px 11px; color: var(--white);
+      font-family: 'Inter', sans-serif; font-size: .84rem;
+      outline: none; width: 100%; transition: border-color .2s;
+    }
+    .equip-input:focus { border-color: var(--border2); }
+    .equip-label {
+      font-size: .68rem; font-weight: 700; color: var(--dim);
+      text-transform: uppercase; letter-spacing: .07em;
+      font-family: 'Rajdhani', sans-serif; margin-bottom: 5px; display: block;
+    }
+
+    /* ── SAVE BAR ── */
+    .save-bar {
+      position: sticky; bottom: 0; background: rgba(10,10,10,.95);
+      backdrop-filter: blur(12px); border-top: 1px solid var(--border);
+      padding: 16px 28px; display: flex; align-items: center;
+      justify-content: space-between; gap: 16px;
+    }
+    .save-bar-info { font-size: .82rem; color: var(--dim); }
+
+    @media (max-width: 640px) {
+      .field-row { grid-template-columns: 1fr; }
+      .equip-grid { grid-template-columns: 50px 1fr; }
+      .equip-grid-2 { grid-template-columns: 1fr 1fr; }
+      .app-content { padding: 24px 16px; }
+      .app-header { padding: 14px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ ÉCRAN DE CONNEXION ══ -->
+<div id="screen-login">
+  <div class="login-box">
+    <div class="login-logo">Savage Production</div>
+    <div class="login-sub">Panel d'administration</div>
+    <label for="token-input">Clé d'accès (GitHub Token)</label>
+    <div class="login-hint">
+      Créez votre clé sur <a href="https://github.com/settings/tokens/new?scopes=repo&description=Savage+Production+CMS" target="_blank">github.com/settings/tokens</a><br>
+      → Cochez <strong>repo</strong> → Générez → Copiez-collez ici.
+    </div>
+    <input type="password" id="token-input" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" />
+    <div id="login-error">Clé invalide ou accès refusé</div>
+    <button class="btn-primary" id="btn-login">Se connecter →</button>
+  </div>
+</div>
+
+<!-- ══ APPLICATION ══ -->
+<div id="screen-app">
+
+  <header class="app-header">
+    <div class="app-header-left">
+      Savage Production
+      <span>Panel d'administration</span>
+    </div>
+    <div class="app-header-right">
+      <div class="toast" id="toast"></div>
+      <button class="btn-logout" id="btn-logout">Déconnexion</button>
+    </div>
+  </header>
+
+  <nav class="app-nav">
+    <button class="nav-tab active" data-tab="general">🏠 Général</button>
+    <button class="nav-tab" data-tab="about">👤 Biographie</button>
+    <button class="nav-tab" data-tab="prestations">🎧 Prestations</button>
+    <button class="nav-tab" data-tab="equipements">🔊 Équipements</button>
+    <button class="nav-tab" data-tab="materiel">🛠️ Matériel inclus</button>
+  </nav>
+
+  <!-- ─── GÉNÉRAL ─── -->
+  <div class="app-content">
+    <div class="tab-panel active" id="tab-general">
+      <div class="panel-title">🏠 Informations générales</div>
+      <div class="panel-desc">Modifiez le texte principal de la page d'accueil, les statistiques et vos coordonnées.</div>
+
+      <div class="field-group">
+        <div class="field-group-title">Présentation</div>
+        <div class="field-row">
+          <div class="field">
+            <label>Nom de l'artiste</label>
+            <input type="text" id="g_hero_name" placeholder="Lucas Amouny" />
+          </div>
+          <div class="field">
+            <label>Accroche (sous le logo)</label>
+            <input type="text" id="g_hero_tag" placeholder="DJ & Producteur · Île de la Réunion..." />
+          </div>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <div class="field-group-title">Statistiques affichées sur la page d'accueil</div>
+        <div class="field-row">
+          <div class="field"><label>Chiffre 1</label><input type="text" id="g_stat1_value" placeholder="500+" /></div>
+          <div class="field"><label>Légende 1</label><input type="text" id="g_stat1_label" placeholder="Soirées mixées" /></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>Chiffre 2</label><input type="text" id="g_stat2_value" placeholder="7 ans" /></div>
+          <div class="field"><label>Légende 2</label><input type="text" id="g_stat2_label" placeholder="Sur scène" /></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>Chiffre 3</label><input type="text" id="g_stat3_value" placeholder="La Réunion" /></div>
+          <div class="field"><label>Légende 3</label><input type="text" id="g_stat3_label" placeholder="Île de la Réunion" /></div>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <div class="field-group-title">Coordonnées (affichées dans le bas de page)</div>
+        <div class="field-row">
+          <div class="field"><label>Email</label><input type="email" id="g_contact_email" placeholder="contact@savageproduction.re" /></div>
+          <div class="field"><label>Téléphone</label><input type="text" id="g_contact_phone" placeholder="+262 6 92 xx xx xx" /></div>
+        </div>
+        <div class="field">
+          <label>Texte de copyright (bas de page)</label>
+          <input type="text" id="g_footer_copyright" placeholder="© 2026 Savage Production..." />
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── BIOGRAPHIE ─── -->
+    <div class="tab-panel" id="tab-about">
+      <div class="panel-title">👤 Biographie</div>
+      <div class="panel-desc">Modifiez la biographie de Lucas et les styles musicaux affichés sur le site.</div>
+
+      <div class="field-group">
+        <div class="field-group-title">Texte de présentation (section "À propos")</div>
+        <div class="field">
+          <label>Paragraphe 1 — Origines & débuts</label>
+          <textarea id="a_bio1" rows="4" placeholder="Né et grandi à La Réunion..."></textarea>
+        </div>
+        <div class="field">
+          <label>Paragraphe 2 — Carrière & expérience</label>
+          <textarea id="a_bio2" rows="4" placeholder="À 23 ans, sous le nom de scène..."></textarea>
+        </div>
+        <div class="field">
+          <label>Paragraphe 3 — Ce qui le distingue</label>
+          <textarea id="a_bio3" rows="3" placeholder="Ce qui le distingue ?..."></textarea>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <div class="field-group-title">Styles musicaux (étiquettes affichées sous la bio)</div>
+        <div class="tags-wrap" id="tags-wrap"></div>
+        <button class="btn-add" id="btn-add-tag">+ Ajouter un style musical</button>
+      </div>
+    </div>
+
+    <!-- ─── PRESTATIONS ─── -->
+    <div class="tab-panel" id="tab-prestations">
+      <div class="panel-title">🎧 Prestations</div>
+      <div class="panel-desc">Modifiez les descriptions de chaque type de prestation.</div>
+
+      <nav class="app-nav" style="padding: 0; margin-bottom: 24px; border-bottom: 1px solid var(--border);">
+        <button class="nav-tab active" data-ptab="mariage">💍 Mariage</button>
+        <button class="nav-tab" data-ptab="prive">🥂 Soirée Privée</button>
+        <button class="nav-tab" data-ptab="club">🎧 Club</button>
+        <button class="nav-tab" data-ptab="entreprise">🏢 Entreprise</button>
+      </nav>
+
+      <div id="prestation-panels">
+        <!-- généré par JS -->
+      </div>
+    </div>
+
+    <!-- ─── ÉQUIPEMENTS ─── -->
+    <div class="tab-panel" id="tab-equipements">
+      <div class="panel-title">🔊 Location d'équipement</div>
+      <div class="panel-desc">Ajoutez, modifiez ou supprimez les équipements disponibles à la location.</div>
+      <div class="equip-list" id="equip-list"></div>
+      <button class="btn-add" id="btn-add-equip">+ Ajouter un équipement</button>
+    </div>
+
+    <!-- ─── MATÉRIEL ─── -->
+    <div class="tab-panel" id="tab-materiel">
+      <div class="panel-title">🛠️ Matériel inclus</div>
+      <div class="panel-desc">Les éléments affichés dans la bande "Matériel professionnel inclus".</div>
+      <div class="field-group">
+        <div class="field-group-title">Liste du matériel inclus dans vos prestations</div>
+        <div class="tags-wrap" id="mat-wrap"></div>
+        <button class="btn-add" id="btn-add-mat">+ Ajouter un élément</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="save-bar">
+    <div class="save-bar-info">Les modifications sont appliquées sur le site en moins d'une minute après sauvegarde.</div>
+    <button class="btn-save" id="btn-save">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+      Sauvegarder
+    </button>
+  </div>
+
+</div>
+
+<script>
+// ══════════════════════════════════
+//  CONFIG
+// ══════════════════════════════════
+const REPO  = 'Florian-Mouniama/savage-production-site-officiel';
+const FILES = {
+  general:     'data/general.json',
+  about:       'data/about.json',
+  prestations: 'data/prestations.json',
+  equipements: 'data/equipements.json',
+  materiel:    'data/materiel.json'
+};
+let TOKEN = '';
+let DATA  = {};
+let SHAS  = {};
+
+// ── GitHub API ──
+async function ghGet(path) {
+  const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`, {
+    headers: { Authorization: `Bearer ${TOKEN}`, Accept: 'application/vnd.github+json' }
+  });
+  if (!r.ok) throw new Error(r.status);
+  return r.json();
+}
+async function ghPut(path, content, sha) {
+  const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`, {
+    method: 'PUT',
+    headers: { Authorization: `Bearer ${TOKEN}`, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      message: `Admin: mise à jour ${path}`,
+      content: btoa(unescape(encodeURIComponent(JSON.stringify(content, null, 2)))),
+      sha
+    })
+  });
+  if (!r.ok) throw new Error(r.status);
+  return r.json();
+}
+
+// ── LOGIN ──
+document.getElementById('btn-login').addEventListener('click', async () => {
+  const t = document.getElementById('token-input').value.trim();
+  if (!t) return;
+  const btn = document.getElementById('btn-login');
+  btn.disabled = true; btn.textContent = 'Connexion…';
+  try {
+    TOKEN = t;
+    await loadAllData();
+    localStorage.setItem('sp_token', t);
+    showApp();
+  } catch(e) {
+    document.getElementById('login-error').style.display = 'block';
+    TOKEN = '';
+  }
+  btn.disabled = false; btn.textContent = 'Se connecter →';
+});
+document.getElementById('token-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') document.getElementById('btn-login').click();
+});
+document.getElementById('btn-logout').addEventListener('click', () => {
+  localStorage.removeItem('sp_token');
+  TOKEN = ''; DATA = {}; SHAS = {};
+  document.getElementById('screen-app').style.display = 'none';
+  document.getElementById('screen-login').style.display = 'flex';
+});
+
+// Auto-login
+const saved = localStorage.getItem('sp_token');
+if (saved) {
+  document.getElementById('token-input').value = saved;
+  document.getElementById('btn-login').click();
+}
+
+// ── CHARGEMENT ──
+async function loadAllData() {
+  for (const [key, path] of Object.entries(FILES)) {
+    const file = await ghGet(path);
+    SHAS[key]  = file.sha;
+    DATA[key]  = JSON.parse(atob(file.content.replace(/\n/g,'')));
+  }
+}
+
+function showApp() {
+  document.getElementById('screen-login').style.display = 'none';
+  document.getElementById('screen-app').style.display  = 'block';
+  fillForms();
+}
+
+// ── REMPLISSAGE DES FORMULAIRES ──
+function fillForms() {
+  const g = DATA.general || {};
+  const a = DATA.about   || {};
+
+  // Général
+  ['hero_name','hero_tag','stat1_value','stat1_label','stat2_value','stat2_label',
+   'stat3_value','stat3_label','contact_email','contact_phone','footer_copyright']
+  .forEach(k => { const el = document.getElementById('g_'+k); if(el) el.value = g[k]||''; });
+
+  // Bio
+  ['bio1','bio2','bio3'].forEach(k => { const el = document.getElementById('a_'+k); if(el) el.value = a[k]||''; });
+
+  // Tags
+  renderTags(a.tags || []);
+
+  // Prestations
+  renderPrestations();
+
+  // Équipements
+  renderEquipements();
+
+  // Matériel
+  renderMateriel();
+}
+
+// ── TAGS ──
+function renderTags(tags) {
+  const wrap = document.getElementById('tags-wrap');
+  wrap.innerHTML = tags.map((t, i) => `
+    <div class="tag-row">
+      <input type="text" value="${escHtml(t)}" data-tag="${i}" placeholder="Ex: Deep House" />
+      <button class="btn-danger" onclick="removeTag(${i})">✕</button>
+    </div>`).join('');
+}
+function removeTag(i) {
+  DATA.about.tags.splice(i, 1);
+  renderTags(DATA.about.tags);
+}
+document.getElementById('btn-add-tag').addEventListener('click', () => {
+  if (!DATA.about.tags) DATA.about.tags = [];
+  DATA.about.tags.push('');
+  renderTags(DATA.about.tags);
+});
+
+// ── PRESTATIONS ──
+const PREST_TABS = ['mariage','prive','club','entreprise'];
+const PREST_LABELS = { mariage:'💍 Mariage', prive:'🥂 Soirée Privée', club:'🎧 Club / Festival', entreprise:'🏢 Entreprise' };
+let activePrestTab = 'mariage';
+
+function renderPrestations() {
+  const container = document.getElementById('prestation-panels');
+  container.innerHTML = PREST_TABS.map(tab => {
+    const p = (DATA.prestations || {})[tab] || {};
+    return `<div class="prest-panel ${tab === activePrestTab ? 'active' : ''}" id="ppanel-${tab}" style="${tab !== activePrestTab ? 'display:none' : ''}">
+      <div class="field-group">
+        <div class="field">
+          <label>Titre de l'onglet</label>
+          <input type="text" id="p_${tab}_titre" value="${escHtml(p.titre||'')}" placeholder="Titre..." />
+        </div>
+        <div class="field">
+          <label>Description</label>
+          <textarea id="p_${tab}_description" rows="4">${escHtml(p.description||'')}</textarea>
+        </div>
+        ${[1,2,3,4,5].map(n => `
+        <div class="field">
+          <label>Point ${n}</label>
+          <input type="text" id="p_${tab}_point${n}" value="${escHtml(p['point'+n]||'')}" placeholder="Ex: Consultation préalable gratuite..." />
+        </div>`).join('')}
+      </div>
+    </div>`;
+  }).join('');
+
+  document.querySelectorAll('[data-ptab]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      activePrestTab = btn.dataset.ptab;
+      document.querySelectorAll('[data-ptab]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.prest-panel').forEach(p => p.style.display = 'none');
+      document.getElementById('ppanel-'+activePrestTab).style.display = 'block';
+    });
+  });
+}
+
+// ── ÉQUIPEMENTS ──
+function renderEquipements() {
+  const list = document.getElementById('equip-list');
+  const items = (DATA.equipements || {}).items || [];
+  list.innerHTML = items.map((eq, i) => `
+    <div class="equip-item" id="equip-${i}">
+      <div class="equip-item-header">
+        <strong>${escHtml(eq.emoji||'?')} Équipement ${i+1}</strong>
+        <button class="btn-danger" onclick="removeEquip(${i})">✕ Supprimer</button>
+      </div>
+      <div class="equip-grid">
+        <div><span class="equip-label">Icône</span><input class="equip-input" data-eq="${i}" data-f="emoji" value="${escHtml(eq.emoji||'')}" placeholder="🎚️" /></div>
+        <div><span class="equip-label">Nom</span><input class="equip-input" data-eq="${i}" data-f="nom" value="${escHtml(eq.nom||'')}" placeholder="Table de mixage" /></div>
+        <div><span class="equip-label">Modèle</span><input class="equip-input" data-eq="${i}" data-f="modele" value="${escHtml(eq.modele||'')}" placeholder="Pioneer DJM-900NXS2" /></div>
+      </div>
+      <div class="equip-grid-2">
+        <div><span class="equip-label">Spec 1</span><input class="equip-input" data-eq="${i}" data-f="spec1" value="${escHtml(eq.spec1||'')}" /></div>
+        <div><span class="equip-label">Spec 2</span><input class="equip-input" data-eq="${i}" data-f="spec2" value="${escHtml(eq.spec2||'')}" /></div>
+        <div><span class="equip-label">Spec 3</span><input class="equip-input" data-eq="${i}" data-f="spec3" value="${escHtml(eq.spec3||'')}" /></div>
+      </div>
+      <div class="equip-price">
+        <div class="prix-field"><span class="equip-label">Prix par jour (€)</span><input class="equip-input" data-eq="${i}" data-f="prix" value="${escHtml(eq.prix||'')}" placeholder="80" style="max-width:120px" /></div>
+      </div>
+    </div>`).join('');
+}
+function removeEquip(i) {
+  DATA.equipements.items.splice(i, 1);
+  renderEquipements();
+}
+document.getElementById('btn-add-equip').addEventListener('click', () => {
+  if (!DATA.equipements.items) DATA.equipements.items = [];
+  DATA.equipements.items.push({ emoji:'🔊', nom:'', modele:'', spec1:'', spec2:'', spec3:'', prix:'' });
+  renderEquipements();
+  document.getElementById('equip-list').lastElementChild?.scrollIntoView({ behavior:'smooth' });
+});
+
+// ── MATÉRIEL ──
+function renderMateriel() {
+  const wrap = document.getElementById('mat-wrap');
+  const items = (DATA.materiel || {}).items || [];
+  wrap.innerHTML = items.map((m, i) => `
+    <div class="tag-row">
+      <input type="text" style="width:60px;flex:0 0 60px" value="${escHtml(m.emoji||'')}" data-mat="${i}" data-f="emoji" placeholder="🎚️" />
+      <input type="text" value="${escHtml(m.texte||'')}" data-mat="${i}" data-f="texte" placeholder="Ex: Table de mixage Pioneer" style="flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:7px;padding:9px 12px;color:var(--white);font-family:'Inter',sans-serif;font-size:.87rem;outline:none;" />
+      <button class="btn-danger" onclick="removeMat(${i})">✕</button>
+    </div>`).join('');
+}
+function removeMat(i) {
+  DATA.materiel.items.splice(i, 1);
+  renderMateriel();
+}
+document.getElementById('btn-add-mat').addEventListener('click', () => {
+  if (!DATA.materiel.items) DATA.materiel.items = [];
+  DATA.materiel.items.push({ emoji:'🎵', texte:'' });
+  renderMateriel();
+});
+
+// ── SAUVEGARDE ──
+document.getElementById('btn-save').addEventListener('click', async () => {
+  const btn = document.getElementById('btn-save');
+  btn.disabled = true; btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg> Sauvegarde…';
+
+  try {
+    collectFormData();
+    // Sauvegarde tous les fichiers
+    for (const [key, path] of Object.entries(FILES)) {
+      const res = await ghPut(path, DATA[key], SHAS[key]);
+      SHAS[key] = res.content.sha;
+    }
+    showToast('✓ Site mis à jour !', 'success');
+  } catch(e) {
+    showToast('Erreur — réessayez', 'error');
+  }
+
+  btn.disabled = false;
+  btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg> Sauvegarder';
+});
+
+function collectFormData() {
+  // Général
+  const g = DATA.general;
+  ['hero_name','hero_tag','stat1_value','stat1_label','stat2_value','stat2_label',
+   'stat3_value','stat3_label','contact_email','contact_phone','footer_copyright']
+  .forEach(k => { const el = document.getElementById('g_'+k); if(el) g[k] = el.value; });
+
+  // Bio
+  const a = DATA.about;
+  ['bio1','bio2','bio3'].forEach(k => { const el = document.getElementById('a_'+k); if(el) a[k] = el.value; });
+
+  // Tags
+  a.tags = [...document.querySelectorAll('[data-tag]')].map(i => i.value).filter(Boolean);
+
+  // Prestations
+  PREST_TABS.forEach(tab => {
+    if (!DATA.prestations[tab]) DATA.prestations[tab] = {};
+    const p = DATA.prestations[tab];
+    ['titre','description','point1','point2','point3','point4','point5'].forEach(f => {
+      const el = document.getElementById(`p_${tab}_${f}`);
+      if(el) p[f] = el.value;
+    });
+  });
+
+  // Équipements
+  document.querySelectorAll('.equip-input').forEach(el => {
+    const i = +el.dataset.eq, f = el.dataset.f;
+    if (DATA.equipements.items[i]) DATA.equipements.items[i][f] = el.value;
+  });
+
+  // Matériel
+  document.querySelectorAll('[data-mat]').forEach(el => {
+    const i = +el.dataset.mat, f = el.dataset.f;
+    if (DATA.materiel.items[i]) DATA.materiel.items[i][f] = el.value;
+  });
+}
+
+// ── NAVIGATION TABS ──
+document.querySelectorAll('.nav-tab:not([data-ptab])').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.nav-tab:not([data-ptab])').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('tab-'+btn.dataset.tab).classList.add('active');
+  });
+});
+
+// ── UTILS ──
+function escHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function showToast(msg, type) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.className = `toast ${type} show`;
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+</script>
+</body>
+</html>

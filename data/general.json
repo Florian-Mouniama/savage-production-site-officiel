@@ -1,14 +1,14 @@
 {
   "site_title": "Savage Production — Lucas Amouny · DJ Professionnel · La Réunion",
-  "hero_name": "Lucas Amouny",
-  "hero_tag": "DJ & Producteur · Île de la Réunion · Mariages · Soirées · Clubs",
-  "stat1_value": "500+",
-  "stat1_label": "Soirées mixées",
-  "stat2_value": "7 ans",
-  "stat2_label": "Sur scène",
-  "stat3_value": "La Réunion",
-  "stat3_label": "Île de la Réunion",
-  "contact_email": "contact@savageproduction.re",
+  "footer_copyright": "© 2026 Savage Production — Lucas Amouny. Tous droits réservés.",
   "contact_phone": "+262 6 92 xx xx xx",
-  "footer_copyright": "© 2026 Savage Production — Lucas Amouny. Tous droits réservés."
+  "stat1_value": "500+",
+  "stat2_value": "7 ans",
+  "hero_name": "Lucas Amouny",
+  "stat3_value": "Test",
+  "stat1_label": "Soirées mixées",
+  "stat2_label": "Sur scène",
+  "stat3_label": "Île de la Réunion",
+  "hero_tag": "DJ & Producteur · Île de la Réunion · Mariages · Soirées · Clubs",
+  "contact_email": "contact@savageproduction.re"
 }

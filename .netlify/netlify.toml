@@ -1,6 +1,6 @@
+redirectsOrigin = "config"
 plugins = []
 headers = []
-redirects = []
 
 [functions]
 
@@ -23,3 +23,15 @@ publishOrigin = "default"
 [build.processing.js]
 
 [build.services]
+
+[[redirects]]
+from = "/admin/*"
+to = "/admin/index.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
